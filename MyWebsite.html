@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technowolves ALPHA - First Lego League 25-26</title>
+
+    <style>
+        :root {
+            --primary-red: #a4161a;
+            --dark-red: #660000;
+            --navy: #16425b;
+            --bg-light: #f8f9fa;
+            --text-main: #212529;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --confetti-blue: #0077b6;
+            --confetti-black: #1a1a1a;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
+            padding: 30px 15px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: var(--navy);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--white);
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        nav button:hover {
+            background-color: var(--primary-red);
+        }
+
+        section {
+            display: none;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Textbox Styling */
+        .textbox {
+            background-color: var(--white);
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 6px solid var(--primary-red);
+            box-shadow: var(--shadow);
+        }
+
+        /* HOMEPAGE SPECIFIC (From 2nd Code) */
+        .home-main-title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            animation: popIn 0.8s ease-out forwards;
+        }
+
+        .home-main-title {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .home-sub-box {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .home-sub-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .icon-rotate {
+            font-size: 40px;
+            animation: swing 3s ease-in-out infinite;
+            color: var(--navy);
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-12deg); }
+            50% { transform: rotate(12deg); }
+        }
+
+        /* DISCOVERIES LAYOUT */
+        .discovery-entry {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .discovery-text { flex: 2; }
+        .discovery-img-container { flex: 1; min-width: 250px; }
+        .discovery-img-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .donate-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .donate-button:hover { background-color: var(--navy); transform: scale(1.05); }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--navy);
+            color: var(--white);
+            margin-top: 60px;
+        }
+
+/* Events Specific Styling */
+.events-main-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--navy);
+    text-align: center;
+    margin: 80px 0;
+    text-transform: uppercase;
+    animation: popIn 0.8s ease-out forwards;
+}
+
+.floating-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark-red);
+    margin-bottom: -15px; /* Pulls the box up to the title */
+    margin-left: 10px;
+    display: block;
+}
+
+.subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.square-list {
+    list-style-type: square; /* Makes the bullet points black squares */
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.square-list li {
+    margin-bottom: 5px;
+}
+    </style>
+
+    <script>
+        function showTab(tabId) {
+            let sections = document.querySelectorAll("section");
+            sections.forEach(section => section.classList.remove("active"));
+            document.getElementById(tabId).classList.add("active");
+            window.scrollTo(0,0);
+
+            if (tabId === 'home') {
+                document.querySelectorAll('.home-sub-box').forEach(box => box.classList.remove('visible'));
+                handleScrollAnimations();
+            }
+        }
+
+        function handleScrollAnimations() {
+            const boxes = document.querySelectorAll('.home-sub-box');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            boxes.forEach(box => observer.observe(box));
+        }
+
+        window.addEventListener('load', handleScrollAnimations);
+    </script>
+</head>
+<body>
+
+<header>Technowolves ALPHA - First Lego League 25-26</header>
+
+<nav>
+    <button onclick="showTab('home')">Homepage</button>
+    <button onclick="showTab('events')">Events</button>
+    <button onclick="showTab('information')">Information</button>
+    <button onclick="showTab('discoveries')">New Discoveries</button>
+    <button onclick="showTab('videos')">Video’s</button>
+    <button onclick="showTab('flyer')">Flyer/Qr Code</button>
+    <button onclick="showTab('about')">About Us</button>
+    <button onclick="showTab('donations')">Donations</button>
+    <button onclick="showTab('credits')">Credits</button>
+</nav>
+
+<section id="home" class="active">
+    <div class="home-main-title-container">
+        <h1 class="home-main-title">This Is a Website That is Dedicated to Helping Archaeologists</h1>
+    </div>
+
+    <div class="textbox home-sub-box" style="text-align: center">
+        <p>In the <strong>ABOUT US</strong>, is the information you need to know about us and the creation of this website and in <strong>INFORMATION</strong> you'll read about archaeologists.</p>
+    </div>
+
+    <div class="textbox home-sub-box" id="mission-box">
+        <div class="flex-container">
+            <div class="icon-rotate">☆</div>
+            <div style="flex: 2; text-align: center;">
+                <h2 style="color: var(--navy);">Advancing Archaeological Research and Preservation</h2>
+                <p>An archaeologist's website is dedicated to the systematic study of human activity through the recovery and analysis of material culture. Our mission is to provide a platform for evidence-based insights into past civilizations, focusing on archaeology and heritage management. Here, you will find peer-reviewed updates, excavation reports, and analysis of the environmental and architectural records that define our collective past.</p>
+            </div>
+            <div class="icon-rotate">🔍</div>
+        </div>
+    </div>
+</section>
+
+<section id="events">
+    <h1 class="events-main-title">Future events to keep an eye out for!</h1>
+
+    <span class="floating-title pop-trigger">Major Conferences & Symposia</span>
+    <div class="textbox pop-trigger">
+        <div class="subtitle">Landscape Archaeology Conference (LAC) 2026</div>
+        <ul class="square-list">
+            <li>Date: March 18 through 21, 2026</li>
+            <li>Location: Bamberg, Germany</li>
+            <li>Focus: Investigating the relationship between human occupation and the natural environment.</li>
+        </ul>
+
+        <div class="subtitle">SAA 91st Annual Meeting (Society for American Archaeology)</div>
+        <ul class="square-list">
+            <li>Date: April 29 through May 3, 2026</li>
+            <li>Location: San Francisco, CA</li>
+            <li>Focus: A massive gathering of professionals covering everything from bioarcheology to digital heritage.</li>
+        </ul>
+
+        <div class="subtitle">32nd EAA Annual Meeting (European Association of Archaeologists)</div>
+        <ul class="square-list">
+            <li>Date: August 26 through 29, 2026</li>
+            <li>Location: Athens, Greece</li>
+            <li>Focus: One of the world's most significant forums for European archaeological research and heritage management.</li>
+        </ul>
+    </div>
+
+    <span class="floating-title pop-trigger">⛏️ Active Digs & Fieldwork (Public Participation)</span>
+    <div class="textbox pop-trigger">
+        <div class="subtitle">Roman Vindolanda Excavations</div>
+        <ul class="square-list">
+            <li>Dates: Various sessions from March 30 through September 25, 2026</li>
+            <li>Location: Hadrian's Wall, Northern England</li>
+            <li>Details: One of the most famous volunteer led digs in the world. (Note: These often book up months in advance!)</li>
+        </ul>
+
+        <div class="subtitle">Chan Chan Archaeology Dig</div>
+        <ul class="square-list">
+            <li>Date: June 7 through 14, 2026</li>
+            <li>Location: Moche Valley, Peru</li>
+            <li>Details: Help uncover the secrets of the Chimú Empire at this massive UNESCO World Heritage site.</li>
+        </ul>
+
+        <div class="subtitle">Sanctuary of Zeus Excavation</div>
+        <ul class="square-list">
+            <li>Date: June 15 - August 1, 2026</li>
+            <li>Location: Mt. Lykaion, Arcadia, Greece</li>
+            <li>Details: Research and excavation season led by the University of Arizona.</li>
+        </ul>
+    </div>
+
+    <span class="floating-title pop-trigger">Museum Exhibitions</span>
+    <div class="textbox pop-trigger">
+        <div class="subtitle">The Celtic World, Europe's Lost Legacy</div>
+        <ul class="square-list">
+            <li>Dates: Running through September 8, 2026</li>
+            <li>Location: Moesgaard Museum, Aarhus, Denmark</li>
+        </ul>
+
+        <div class="subtitle">Terracotta Warriors: Civilization of the Qin and Han Dynasties</div>
+        <ul class="square-list">
+            <li>Dates: Through May 25, 2026</li>
+            <li>Location: Museum of Fine Arts, Budapest, Hungary</li>
+        </ul>
+    </div>
+
+    <span class="floating-title pop-trigger">Virtual & Online Events</span>
+    <div class="textbox pop-trigger">
+        <div class="subtitle">Webinar: One Coin, Two Sides: The History & Archaeology of Fort Nisqually</div>
+        <ul class="square-list">
+            <li>Webinar: One Coin, Two Sides: The History & Archaeology of Fort Nisqually</li>
+            <li>Date: March 19, 2026</li>
+            <li>Host: The Archaeological Conservancy</li>
+        </ul>
+
+        <div class="subtitle">Virtual Lecture: Living Memory, Landscapes, and Connection</div>
+        <ul class="square-list">
+            <li>Date: March 12, 2026</li>
+            <li>Host: Crow Canyon Archaeological Center</li>
+        </ul>
+    </div>
+</section>
+
+<section id="information">
+    <div class="textbox">
+        <h2>What is Archaeology</h2>
+        <p>The scientific study of material remains such as tools pottery jewelry stone walls and monuments of past human life and activities</p>
+    </div>
+
+    <div class="textbox">
+        <h2>Why is it even important?</h2>
+        <p>The reason why archaeology is so important is that it teaches humans about their past in the areas where they live. Archaeologists learn to understand why, how and to a rough estimate when such influential events happened in our past and how some of those events continue to impact our lives today.</p>
+        <p>Looking into how agricultural tools developed alongside the rise of permanent villages and cities helps us understand why civilizations came into being and why some eventually fell apart. When we dig into how and why cultures evolved in the past it gives us a clearer picture of human behavior and the way we influence our environment.</p>
+        <p>A lot of our future decisions are shaped by the insights archaeologists have gained from those who lived before us. By better understanding our history we deepen our knowledge of cultural shifts happening now and what might happen down the road which helps us prepare for and address the social, political , environmental and demographic challenges we face today.</p>
+    </div>
+
+<div class="textbox">
+        <h2>Archaeology isn't just one field to be discovered its eclectic for our understanding of history</h2>
+        <p>Many people picture archaeology as just one field where you are in desert areas digging up and finding artifacts. It is our main idea of archaeology as it’s very important yet if we really look at it it’s so much more than that. Archaeology has so many parts to it which usually goes unnoticed. When researchers study what they have found it’s not all just ancient archaeologists and or architectural buildings. Archaeologists can concentrate on a specific area within their field. This involves focusing on certain methods of analysis, types of artifacts, specific cultures or particular historical time frames. One of the types of researchers study is based on geography, geology, geophysics and other Earth sciences. They are called geoarcheologists studying and examining the land features of what they used to be like.</p>
+    </div>
+</section>
+
+<section id="discoveries">
+    <h2>New Discoveries</h2>
+    
+    <div class="textbox discovery-entry">
+        <div class="discovery-text">
+             <h2>Last undiscovered tomb of Tutankhamun dynasty found</h2>
+            <p>For more than a century the sands of Egypt have guarded a royal secret that many believed was lost to time. Now a monumental find has finally broken that silence unearthing a hidden legacy that hasnt been seen since the legendary discovery of 1922.</p>
+        </div>
+        <div class="discovery-img-container">
+            <img src="1st image 11cd0680-eee7-11ef-9cf8-5dc390817f3c.jpg.webp" alt="Tutankhamun Tomb Entrance">
+        </div>
+    </div>
+
+    <div class="textbox discovery-entry">
+        <div class="discovery-text">
+            <h2>A Human Face Was Carved Into This Stone Pillar in Turkey 11000 Years Ago</h2>
+            <p>Deep within the rugged Stone Hills of Turkey a silent sentinel has emerged from an 11000 year old slumber to finally stare back at the modern world. This unprecedented discovery at a legendary archaeological site offers a hauntingly personal connection to our earliest ancestors revealing a secret that has been hidden beneath the earth since the dawn of civilization.</p>
+        </div>
+        <div class="discovery-img-container">
+            <img src="2nd image 28e211c9-7990-4cc2-bf81-f5286656842a.jpg" alt="Ancient Carved Face">
+        </div>
+    </div>
+    
+    <div class="textbox discovery-entry">
+        <div class="discovery-text">
+            <h2>Hymn to Babylon discovered revealing ancient Mesopotamian city life</h2>
+            <p>Buried within a library said to have been hidden before the Great Flood a long lost voice has finally broken its two thousand year silence. This recovered masterpiece resurrected through a cutting edge technological breakthrough offers a rare and hauntingly beautiful window into a world once thought lost to history.</p>
+        </div>
+        <div class="discovery-img-container">
+            <img src="3rd image 4961.avif" alt="Excavation site">
+        </div>
+    </div>
+
+    <div class="textbox discovery-entry">
+        <div class="discovery-text">
+            <h2>Oldest known rock art dated to 67800 years discovered in Sulawesi cave</h2>
+            <p>For tens of thousands of years a ghostly imprint has waited in the shadows of a remote cave to tell a story of a world long forgotten. This haunting signature has finally emerged from the darkness shattering our understanding of when the human spirit first reached out to leave its mark on the world. Click above to learn more.</p>
+        </div>
+        <div class="discovery-img-container">
+            <img src="4th image 1751705391930.jpg" alt="Ancient rock art tablet">
+        </div>
+    </div>
+
+    <div class="textbox discovery-entry">
+        <div class="discovery-text">
+            <h2>15 million year old bone tools discovered in Tanzania to rewrite the history of human evolution</h2>
+            <p>Deep within a legendary African gorge a hidden collection of artifacts has finally come to light rewriting a million years of forgotten history in a single stroke. These tools carved with unexpected precision from the bones of long dead behemoths hint at a sophisticated mind that shouldnt have existed for another millennia.</p>
+        </div>
+        <div class="discovery-img-container">
+            <img src="5th image download.jpg" alt="Ancient bone tool artifact">
+        </div>
+    </div>
+
+    <div class="textbox discovery-entry">
+        <div class="discovery-text">
+            <h2>This Ancient Pyramid Found in the Judean Desert May Have Been a Ptolemaic Tax Collectors Station</h2>
+            <p>Perched on a desolate desert mound a strange stone sentinel has guarded a cache of forgotten treasures for over two thousand years. This mysterious structure once teeming with ancient life and bureaucracy now stands as a silent monument to a lost power that once controlled the very roads of the Judean wilderness.</p>
+        </div>
+        <div class="discovery-img-container">
+            <img src="6th image oldest-rock-art-sulawesi-cave-1.webp" alt="Sulawesi Cave Art">
+        </div>
+    </div>
+
+    <div class="textbox discovery-entry">
+        <div class="discovery-text">
+            <h2>Archaeologists Unearth the Ruins of a 2000 Year Old Roman Basilica Beneath an Office Building in London</h2>
+            <p>Beneath the polished floors of a modern London financial hub a silent witness to a forgotten empire has finally been pulled from the shadows. This sprawling 2000 year old sanctuary of power once stood at the heart of a civilization waiting centuries for the light of day to find it once again</p>
+        </div>
+        <div class="discovery-img-container">
+            <img src="7th image Pyramid-structure-in-the-Judean-Desert-north-of-Nahal-Zohar.-Courtesy-Emil-Aladjem-IAA-scaled.jpg" alt="Desert Pyramid Site">
+        </div>
+    </div>
+</section>
+
+
+<section id="videos">
+    <div class="textbox">
+        <h2>Educational Videos Coming Soon</h2>
+        <p>Robotics powered archaeological exploration demonstrations will be available here soon.</p>
+    </div>
+</section>
+
+<section id="flyer">
+    <div class="textbox">
+        <h2>Flyer and QR Code</h2>
+        <p>Printable flyer and scannable QR code will be available here.</p>
+    </div>
+</section>
+
+<section id="about">
+    <div class="textbox">
+        <h2>About Technowolves ALPHA</h2>
+        <p>Technowolves ALPHA is a robotics team dedicated to enhancing archaeological perspectives using modern technology for First Lego League 25-26.</p>
+    </div>
+</section>
+
+<section id="donations">
+    <div class="textbox" style="text-align: center;">
+        <h2>Donations</h2>
+        <p>Archaeologists are fairly under known and not appreciated. Because of that money is tight. Yes we are paid but also not enough. The equipment we are using is quite expensive. Help us fund our wonderful unearthing expeditions!</p>
+        <br>
+        <button onclick="showTab('thankyou')" class="donate-button">Make Donations Here!</button>
+    </div>
+</section>
+
+<section id="thankyou">
+    <div class="textbox" style="text-align: center;">
+        <h2>Thank You For Contributing</h2>
+        <p>Your support ensures that history continues to be unearthed. We appreciate your dedication to the Technowolves ALPHA mission.</p>
+        <br>
+        <button onclick="showTab('home')" class="donate-button">Back to Home</button>
+    </div>
+</section>
+
+<section id="credits">
+    <div class="textbox">
+        <h2>Credits</h2>
+        <p>Website Design by Technowolves ALPHA Robotics Team</p>
+    </div>
+</section>
+
+<footer>
+© 2026 Technowolves ALPHA
+</footer>
+
+</body>
+</html>
+
