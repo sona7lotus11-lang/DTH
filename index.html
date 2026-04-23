@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technowolves ALPHA - First Lego League 25-26</title>
+    <title>DTH</title>
 
     <style>
         :root {
@@ -65,6 +65,10 @@
             background-color: var(--primary-red);
         }
 
+        .menu-toggle {
+            display: none;
+        }
+
         section {
             display: none;
             max-width: 1100px;
@@ -76,7 +80,6 @@
             display: block;
         }
 
-        /* Textbox Styling */
         .textbox {
             background-color: var(--white);
             padding: 30px;
@@ -86,7 +89,6 @@
             box-shadow: var(--shadow);
         }
 
-        /* HOMEPAGE SPECIFIC (From 2nd Code) */
         .home-main-title-container {
             display: flex;
             justify-content: center;
@@ -142,7 +144,6 @@
             50% { transform: rotate(12deg); }
         }
 
-        /* DISCOVERIES LAYOUT */
         .discovery-entry {
             display: flex;
             gap: 30px;
@@ -151,7 +152,12 @@
         }
 
         .discovery-text { flex: 2; }
-        .discovery-img-container { flex: 1; min-width: 250px; }
+
+        .discovery-img-container {
+            flex: 1;
+            min-width: 250px;
+        }
+
         .discovery-img-container img {
             width: 100%;
             height: auto;
@@ -172,7 +178,10 @@
             border: none;
         }
 
-        .donate-button:hover { background-color: var(--navy); transform: scale(1.05); }
+        .donate-button:hover {
+            background-color: var(--navy);
+            transform: scale(1.05);
+        }
 
         footer {
             text-align: center;
@@ -182,43 +191,201 @@
             margin-top: 60px;
         }
 
-/* Events Specific Styling */
-.events-main-title {
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--navy);
-    text-align: center;
-    margin: 80px 0;
-    text-transform: uppercase;
-    animation: popIn 0.8s ease-out forwards;
-}
+        .events-main-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--navy);
+            text-align: center;
+            margin: 80px 0;
+            text-transform: uppercase;
+            animation: popIn 0.8s ease-out forwards;
+        }
 
-.floating-title {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--dark-red);
-    margin-bottom: -15px; /* Pulls the box up to the title */
-    margin-left: 10px;
-    display: block;
-}
+        .floating-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-red);
+            margin-bottom: -15px;
+            margin-left: 10px;
+            display: block;
+        }
 
-.subtitle {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
+        .subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
 
-.square-list {
-    list-style-type: square; /* Makes the bullet points black squares */
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
+        .square-list {
+            list-style-type: square;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
 
-.square-list li {
-    margin-bottom: 5px;
-}
+        .square-list li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 992px) {
+            header {
+                font-size: 26px;
+                padding: 22px 12px;
+            }
+
+            section {
+                padding: 30px 16px;
+            }
+
+            .home-main-title-container {
+                height: auto;
+                min-height: 42vh;
+                padding: 12px;
+            }
+
+            .home-main-title {
+                font-size: 40px;
+                letter-spacing: 1px;
+            }
+
+            .events-main-title {
+                font-size: 38px;
+                margin: 50px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: block;
+                text-align: left;
+                padding: 6px;
+            }
+
+            nav button {
+                width: 100%;
+                text-align: left;
+                padding: 12px 14px;
+                font-size: 12px;
+                white-space: normal;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: auto;
+                padding: 8px 12px;
+                border-radius: 6px;
+                border: 1px solid rgba(255,255,255,0.35);
+                background: rgba(255,255,255,0.1);
+                color: rgba(255,255,255,0.95);
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1;
+                margin: 4px 0 6px 4px;
+            }
+
+            .menu-toggle:hover {
+                background: rgba(255,255,255,0.2);
+            }
+
+            nav .nav-item {
+                display: none;
+                border-top: 1px solid rgba(255,255,255,0.15);
+            }
+
+            nav.mobile-open .nav-item {
+                display: block;
+            }
+
+            header {
+                font-size: 22px;
+                letter-spacing: 0.5px;
+            }
+
+            .textbox {
+                padding: 20px;
+                margin: 18px 0;
+            }
+
+            .home-main-title {
+                font-size: 30px;
+                line-height: 1.25;
+            }
+
+            .events-main-title {
+                font-size: 30px;
+                margin: 35px 0;
+            }
+
+            .floating-title {
+                font-size: 22px;
+                margin-bottom: -10px;
+                margin-left: 6px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .icon-rotate {
+                font-size: 32px;
+            }
+
+            .discovery-entry {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .discovery-img-container {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .donate-button {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 22px 12px;
+            }
+
+            .home-main-title-container {
+                min-height: 36vh;
+                padding: 8px;
+            }
+
+            .home-main-title {
+                font-size: 24px;
+            }
+
+            .events-main-title {
+                font-size: 24px;
+                margin: 26px 0;
+            }
+
+            .floating-title {
+                font-size: 19px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .textbox {
+                padding: 16px;
+            }
+
+            footer {
+                padding: 20px 12px;
+                margin-top: 36px;
+            }
+        }
     </style>
 
     <script>
@@ -227,6 +394,11 @@
             sections.forEach(section => section.classList.remove("active"));
             document.getElementById(tabId).classList.add("active");
             window.scrollTo(0,0);
+
+            const nav = document.querySelector('nav');
+            if (window.innerWidth <= 768 && nav) {
+                nav.classList.remove('mobile-open');
+            }
 
             if (tabId === 'home') {
                 document.querySelectorAll('.home-sub-box').forEach(box => box.classList.remove('visible'));
@@ -247,23 +419,30 @@
             boxes.forEach(box => observer.observe(box));
         }
 
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            if (!nav) return;
+            nav.classList.toggle('mobile-open');
+        }
+
         window.addEventListener('load', handleScrollAnimations);
     </script>
 </head>
 <body>
 
-<header>Technowolves ALPHA - First Lego League 25-26</header>
+<header>✦. ── 𝓓𝒊𝓰 𝓣𝒉𝒂𝒕 𝓗𝒊𝒔𝒕𝒐𝓻𝔂 ── .✦</header>
 
 <nav>
-    <button onclick="showTab('home')">Homepage</button>
-    <button onclick="showTab('events')">Events</button>
-    <button onclick="showTab('information')">Information</button>
-    <button onclick="showTab('discoveries')">New Discoveries</button>
-    <button onclick="showTab('videos')">Video’s</button>
-    <button onclick="showTab('flyer')">Flyer/Qr Code</button>
-    <button onclick="showTab('about')">About Us</button>
-    <button onclick="showTab('donations')">Donations</button>
-    <button onclick="showTab('credits')">Credits</button>
+    <button type="button" class="menu-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">☰ Menu</button>
+    <button class="nav-item" onclick="showTab('home')">Homepage</button>
+    <button class="nav-item" onclick="showTab('events')">Events</button>
+    <button class="nav-item" onclick="showTab('information')">Information</button>
+    <button class="nav-item" onclick="showTab('discoveries')">New Discoveries</button>
+    <button class="nav-item" onclick="showTab('videos')">Video’s</button>
+    <button class="nav-item" onclick="showTab('flyer')">Flyer/Qr Code</button>
+    <button class="nav-item" onclick="showTab('about')">About Us</button>
+    <button class="nav-item" onclick="showTab('donations')">Donations</button>
+    <button class="nav-item" onclick="showTab('credits')">Credits</button>
 </nav>
 
 <section id="home" class="active">
