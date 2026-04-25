@@ -149,7 +149,51 @@
             gap: 30px;
             align-items: center;
             flex-wrap: wrap;
+
+        .flyer-container {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
         }
+
+        .flyer-box {
+    background: #ffffff;
+    border: 2px solid #2c3e50;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+        }.flyer-image-large {
+    width: 100%;
+    max-height: 700px;
+    object-fit: contain;
+    background: #f4f4f4;
+    padding: 10px;
+}
+
+.qr-box {
+    text-align: center;
+    padding: 40px;
+    background: #f9f9f9;
+    border: 2px dashed #001f3f;
+    border-radius: 15px;
+}
+
+.qr-image {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+}
+
+.qr-caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
 
         .discovery-text { flex: 2; }
 
@@ -425,7 +469,6 @@
                 padding: 20px 12px;
                 margin-top: 36px;
             }
-
             /* Styling for Works Cited */
 .citation {
     padding-left: 2em;
@@ -727,12 +770,24 @@
     </div>
 </section>
 
-<section id="flyer">
-    <div class="textbox">
-        <h2>Flyer and QR Code</h2>
-        <p>Printable flyer and scannable QR code will be available here.</p>
-    </div>
-</section>
+<div id="flyer-qr-code" class="tab-content">
+    <section id="flyers" class="flyer-container">
+        
+        <div class="flyer-box">
+            <img src="Screenshot 2026-04-25 084352.png" alt="Paleoecology Flyer" class="flyer-image-large">
+        </div>
+
+        <div class="flyer-box">
+            <img src="Screenshot 2026-04-25 084419.jpg" alt="Archive Archaeology Flyer" class="flyer-image-large">
+        </div>
+
+        <div class="qr-box">
+            <img src="qrcode_sona7lotus11-lang.github.io.png" alt="Website QR Code" class="qr-image">
+            <p class="qr-caption">Share this experience with others!</p>
+        </div>
+
+    </section>
+</div>
 
 <section id="about">
     <div class="textbox">
