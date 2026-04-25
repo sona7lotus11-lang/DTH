@@ -1,3 +1,39 @@
+
+
+1 of 13,603
+Website
+Inbox
+
+Angel mandal
+Attachments
+10:52 PM (17 minutes ago)
+1st video: A Day in the Life of the Archaeological Dig at James Fort 2nd video: Digging for Native Artifacts [Stuck in Vermont 750] 3rd video: Inside Cambodia's
+
+Angel mandal
+Attachments
+10:55 PM (13 minutes ago)
+1st https://www.youtube.com/watch?v=MhIa7OJ8sN4 2nd https://www.youtube.com/watch?v=J5_X2J6LL6Y 3rd https://www.youtube.com/watch?v=CI5PbBJL9jc
+
+Angel mandal
+Attachments
+11:03 PM (6 minutes ago)
+video 1: A Day in the Life of the Archaeological Dig at James Fort by JamestownRediscovery: This Video will help you understand some of the work that goes along
+
+Kumar Guddu
+Attachments
+11:07 PM (1 minute ago)
+to me
+
+Updated code file.
+
+On Fri, Apr 24, 2026 at 10:52 PM Angel mandal <anjali2009mis2@gmail.com> wrote:
+1st video: A Day in the Life of the Archaeological Dig at James Fort
+
+2nd video: Digging for Native Artifacts [Stuck in Vermont 750]
+
+3rd video: Inside Cambodia's Cave of Bridges
+ One attachment
+  •  Scanned by Gmail
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -228,6 +264,37 @@
             margin-bottom: 5px;
         }
 
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .video-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .video-card {
+            display: block;
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: block;
+        }
+
+        .video-description {
+            margin: 0;
+            flex: 1;
+        }
+
         @media (max-width: 992px) {
             header {
                 font-size: 26px;
@@ -347,6 +414,15 @@
             .donate-button {
                 width: 100%;
                 max-width: 320px;
+            }
+
+            .video-item {
+                flex-direction: column;
+            }
+
+            .video-card {
+                width: 100%;
+                max-width: 340px;
             }
         }
 
@@ -661,8 +737,29 @@
 
 <section id="videos">
     <div class="textbox">
-        <h2>Educational Videos Coming Soon</h2>
-        <p>Robotics powered archaeological exploration demonstrations will be available here soon.</p>
+        <h2>Educational Videos</h2>
+        <div class="video-list">
+            <div class="video-item">
+                <a class="video-card" href="https://www.youtube.com/watch?v=MhIa7OJ8sN4&authuser=0" target="_blank" rel="noopener noreferrer" aria-label="A Day in the Life of the Archaeological Dig at James Fort">
+                    <img src="https://img.youtube.com/vi/MhIa7OJ8sN4/hqdefault.jpg" alt="A Day in the Life of the Archaeological Dig at James Fort thumbnail">
+                </a>
+                <p class="video-description">A Day in the Life of the Archaeological Dig at James Fort by JamestownRediscovery: This Video will help you understand some of the work that goes along with archeologists.</p>
+            </div>
+
+            <div class="video-item">
+                <a class="video-card" href="https://www.youtube.com/watch?v=J5_X2J6LL6Y&authuser=0" target="_blank" rel="noopener noreferrer" aria-label="Digging for Native Artifacts">
+                    <img src="https://img.youtube.com/vi/J5_X2J6LL6Y/hqdefault.jpg" alt="Digging for Native Artifacts thumbnail">
+                </a>
+                <p class="video-description">Digging for Native Artifacts [Stuck in Vermont 750] by StuckinVermont: This video will show you how archaeologists work and study with native artifacts!</p>
+            </div>
+
+            <div class="video-item">
+                <a class="video-card" href="https://www.youtube.com/watch?v=CI5PbBJL9jc&authuser=0" target="_blank" rel="noopener noreferrer" aria-label="Inside Cambodia's Cave of Bridges">
+                    <img src="https://img.youtube.com/vi/CI5PbBJL9jc/hqdefault.jpg" alt="Inside Cambodia's Cave of Bridges thumbnail">
+                </a>
+                <p class="video-description">Inside Cambodia's Cave of Bridges by ArchaeologyTV: This footage will present how archaeologists work inside caves!</p>
+            </div>
+        </div>
     </div>
 </section>
 
