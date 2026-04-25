@@ -441,7 +441,73 @@
             nav.classList.toggle('mobile-open');
         }
 
-        window.addEventListener('load', handleScrollAnimations);
+        /* Video Tab Formatting */
+.video-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.video-main-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.video-box {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    height: 250px; /* Medium sized box */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.video-box.reverse {
+    flex-direction: row-reverse;
+}
+
+.video-photo-link {
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.video-photo-link:hover {
+    opacity: 0.85;
+}
+
+.video-photo-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-text {
+    flex: 1.2;
+    padding: 25px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #444;
+}
+
+@media (max-width: 768px) {
+    .video-box, .video-box.reverse {
+        flex-direction: column;
+        height: auto;
+    }
+    .video-text {
+        padding: 15px;
+        font-size: 16px;
+    }
+        
+     window.addEventListener('load', handleScrollAnimations);
     </script>
 </head>
 <body>
@@ -659,10 +725,37 @@
 </section>
 
 
-<section id="videos">
-    <div class="textbox">
-        <h2>Educational Videos Coming Soon</h2>
-        <p>Robotics powered archaeological exploration demonstrations will be available here soon.</p>
+<section id="videos" class="video-container">
+    <h1 class="video-main-title">Visual Videos to get better understanding of Archeologists works!</h1>
+
+    <div class="video-box">
+        <a href="https://www.youtube.com/watch?v=MhIa7OJ8sN4&t=15s" target="_blank" class="video-photo-link">
+            <img src="1st Screenshot 2026-04-24 220206.jpg" alt="A Day in the Life at James Fort">
+        </a>
+        <div class="video-text">
+            <strong>Video A Day in the Life of the Archaeological Dig at James Fort by JamestownRediscovery:</strong> 
+            This Video will help you understand some of the work that goes along with archeologists.
+        </div>
+    </div>
+
+    <div class="video-box reverse">
+        <a href="https://www.youtube.com/watch?v=J5_X2J6LL6Y&t=1s" target="_blank" class="video-photo-link">
+            <img src="2nd Screenshot 2026-04-24 220041.jpg" alt="Digging for Native Artifacts">
+        </a>
+        <div class="video-text">
+            <strong>Digging for Native Artifacts [Stuck in Vermont 750] by StuckinVermont:</strong> 
+            This video will show you how archeologists work and study with native artifacts!
+        </div>
+    </div>
+
+    <div class="video-box">
+        <a href="https://www.youtube.com/watch?v=CI5PbBJL9jc&t=6s" target="_blank" class="video-photo-link">
+            <img src="3rd Screenshot 2026-04-24 215824.jpg" alt="Inside Cambodia's Cave of Bridges">
+        </a>
+        <div class="video-text">
+            <strong>Inside Cambodia's Cave of Bridges by ArchaeologyTV:</strong> 
+            This footage will present of how archaeologists work inside caves!
+        </div>
     </div>
 </section>
 
